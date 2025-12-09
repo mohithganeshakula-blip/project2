@@ -54,7 +54,7 @@ group by r.r_Name
 order by Resturent_revenue desc
 limit 1;
 
-print(#which custmor spent more money)
+print("#which custmor spent more money")
 
 select c.C_Name, sum(o.or_amount) as Cust_Most from orders o
 join customer c on o.C_id = c.C_id
@@ -62,38 +62,38 @@ group by c.C_Name
 order by Cust_Most desc
 limit 1;
 
-#no.of order per Cuisine 
+print("#no.of order per Cuisine")
 
 select r.Cuisine,count(o.or_amount) as Total_Cuisene from orders o
 join resturent r on o.r_id = r.r_id
 group by r.Cuisine;
 
-# which place has most no.of orders
+print("# which place has most no.of orders")
 
 select c.C_City,count(o.or_amount) as Top_City from orders o
 join customer c on o.C_id = c.C_id
 group by c.C_City;
 
-#What is the average order amount per restaurant?
+print("#What is the average order amount per restaurant?")
 
 select r.r_Name,round(avg(o.or_amount),2) as avg_order from orders o
 join resturent r on r.r_id = o.r_id
 group by r.r_Name;
 
-#which month has highest 
+print(#which month has highest )
 
 select date_format(o.or_date,'%y - %m'),sum(o.or_amount) as Monthly from orders o
 group by date_format(o.or_date,'%y - %m')
 order by Monthly;
 
-#List customers who placed more than 1 order.
+print(#List customers who placed more than 1 order.)
 
 select c.C_Name,count(o.or_id) as No_of_orders from orders o
 join customer c on o.c_id = c.c_id
 group by c.C_Name
 order by No_of_orders desc;
 
-#top 3 highest order amounts
+print(#top 3 highest order amounts)
 
 select r.r_Name, o.or_amount
 from orders o
